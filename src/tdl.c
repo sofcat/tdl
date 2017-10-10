@@ -11,13 +11,12 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 	/* set all values to none */
 	new->url = NULL;
 	new->progress = 0.0;
-	new->next = NULL;
+	ew->next = NULL;
 	new->state = WAITING;
 
 	if (prev != NULL)
 	{
 		prev->next = new;
-		printf("prev->next = new;\n");
 	}
 }
 
