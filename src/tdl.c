@@ -31,6 +31,6 @@ int main()
 
 	do {
 		putchar('>');
-	} while (fscanf(stdin, "%s", cmd) != EOF);
+	} while (fgets(cmd, sizeof(cmd), stdin) != NULL);
 	return 0;
 }
