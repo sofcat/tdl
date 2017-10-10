@@ -17,3 +17,4 @@ obj: $(SRCDIR)/tdl.c $(SRCDIR)/cmd.c $(SRCDIR)/cmd.h
 
 clean: $(OBJ)/tdl.o $(OBJ)/cmd.o
 	rm $(OBJ)/*
+	rm $(WD)/*.out
