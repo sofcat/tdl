@@ -1,6 +1,6 @@
 enum status
 {
-	BEGIN, /* the file has just been initalized */
+	WAITING, /* the file has just been initalized, and when it is waiting to start */
 	RUNNING, /* the file is downloading */
 	FINISHED, /* the file has finished downloading */
 	CANCELED, /* the file has been cancelled by the user */
