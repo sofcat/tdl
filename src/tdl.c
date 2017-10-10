@@ -1,16 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include "types.h"
 #include "cmd.h"
 #include "signals.h"
-
-struct downloaditem
-{
-	char *url;
-	unsigned priority;
-	float progress;
-	struct downloaditem *next;
-};
 
 /* function to create the items, setting all values to NULL or zero */
 void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
@@ -30,7 +23,7 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 int main()
 {
 	struct sigaction sa; /* for signals */
-	struct downloaditem inital; /* must have an an inital struct to allow for linking lists */
+	dl_t inital; /* must have an an inital struct to allow for linking lists */
 	char cmd[32]; /* commands which are typed in are stored here */
 
 	sa.sa_handler = &handlesignal;
