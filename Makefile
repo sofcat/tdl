@@ -1,4 +1,4 @@
-FLAGS = -Wall -Wextra
+FLAGS = -std=c89 -Wall -Wextra
 LIBS = -lcurl
 WD := $(shell pwd)
 OBJ := $(WD)/obj

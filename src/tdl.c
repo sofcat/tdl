@@ -12,6 +12,7 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 	new->url = NULL;
 	new->progress = 0.0;
 	new->next = NULL;
+	new->state = NEW;
 
 	if (prev != NULL)
 	{
@@ -22,12 +23,9 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 
 int main()
 {
-	struct sigaction sa; /* for signals */
+	struct sigaction *sa; /* for signals */
 	dl_t inital; /* must have an an inital struct to allow for linking lists */
 	char cmd[32]; /* commands which are typed in are stored here */
-
-	sa.sa_handler = &handlesignal;
-
 
 	initalizeitem(&inital, NULL);
 
