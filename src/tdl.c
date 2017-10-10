@@ -25,7 +25,7 @@ int main()
 {
 	struct sigaction *sa; /* for signals */
 	dl_t inital; /* must have an an inital struct to allow for linking lists */
-	char cmd[32]; /* commands which are typed in are stored here */
+	char cmd[CMD_SIZE]; /* commands which are typed in are stored here */
 
 	initalizeitem(&inital, NULL);
 
