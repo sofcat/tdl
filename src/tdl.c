@@ -25,11 +25,12 @@ int main()
 	struct sigaction *sa; /* for signals */
 	dl_t inital; /* must have an an inital struct to allow for linking lists */
 	char cmd[CMD_SIZE]; /* commands which are typed in are stored here */
+	char *prompt = "> "; /* the command prompt TODO: make changable */
 
 	initalizeitem(&inital, NULL);
 
 	do {
-		putchar('>');
+		printf("%s", prompt);
 	} while (fgets(cmd, sizeof(cmd), stdin) != NULL);
 	return 0;
 }
