@@ -12,7 +12,7 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 	new->url = NULL;
 	new->progress = 0.0;
 	new->next = NULL;
-	new->state = NEW;
+	new->state = BEGIN;
 
 	if (prev != NULL)
 	{
