@@ -1,4 +1,4 @@
 WIP
 
-- Dependences:
-	libcurl
+Dependences:
+-libcurl
