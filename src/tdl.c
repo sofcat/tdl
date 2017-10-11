@@ -11,7 +11,7 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 	/* set all values to none */
 	new->url = NULL;
 	new->progress = 0.0;
-	ew->next = NULL;
+	new->next = NULL;
 	new->state = WAITING;
 
 	if (prev != NULL)
@@ -30,6 +30,10 @@ int main()
 	initalizeitem(&inital, NULL);
 
 	do {
+		if (strlen(cmd) > 0)
+		{
+			parsecmd(cmd);
+		}
 		printf("%s", prompt);
 	} while (fgets(cmd, sizeof(cmd), stdin) != NULL);
 	return 0;

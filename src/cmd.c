@@ -2,4 +2,5 @@
 
 int parsecmd(char *cmd)
 {
+	puts("cmd recived");
 }
