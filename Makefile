@@ -1,20 +1,17 @@
-FLAGS = -std=c89 -Wall -Wextra
+FLAGS = -g -std=c89 -Wall -Wextra
 LIBS = -lcurl
-WD := $(shell pwd)
-OBJ := $(WD)/obj
-SRC := $(WD)/src
 
-all: $(SRC)/tdl.c $(SRC)/cmd.c $(SRC)/cmd.h $(SRC)/signals.c $(SRC)/signals.h $(SRC)/types.h
-	cc $(FLAGS) $(LIBS) -c $(SRC)/cmd.c -o $(OBJ)/cmd.o
-	cc $(FLAGS) $(LIBS) -c $(SRC)/tdl.c -o $(OBJ)/tdl.o
-	cc $(FLAGS) $(LIBS) -c $(SRC)/signals.c -o $(OBJ)/signals.o
-	cc $(OBJ)/cmd.o $(OBJ)/tdl.o $(OBJ)/signals.o -o $(WD)/tdl.out
+all: src/tdl.c src/cmd.c src/cmd.h src/signals.c src/signals.h src/types.h
+	cc $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
+	cc $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
+	cc $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
+	cc obj/cmd.o obj/tdl.o obj/signals.o -o obj/tdl.out
 
-obj: $(SRC)/tdl.c $(SRC)/cmd.c $(SRC)/cmd.h
-	cc $(FLAGS) $(LIBS) -c $(SRC)/cmd.c -o $(OBJ)/cmd.o
-	cc $(FLAGS) $(LIBS) -c $(SRC)/tdl.c -o $(OBJ)/tdl.o
-	cc $(FLAGS) $(LIBS) -c $(SRC)/signals.c -o $(OBJ)/signals.o
+obj: src/tdl.c src/cmd.c src/cmd.h
+	cc $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
+	cc $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
+	cc $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
 
-clean: $(OBJ)/tdl.o $(OBJ)/cmd.o
-	rm $(OBJ)/*
-	rm $(WD)/*.out
+clean: obj/tdl.o obj/cmd.o
+	rm obj/*
+	rm *.out
