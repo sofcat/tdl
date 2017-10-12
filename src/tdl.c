@@ -24,7 +24,7 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 /* makes all string values zero */
 void zerostring(char *str)
 {
-	int i;
+	unsigned i;
 
 	for (i = 0; i < strlen(str); i++)
 		str[i] = 0;

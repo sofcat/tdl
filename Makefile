@@ -1,17 +1,20 @@
 FLAGS = -g -std=c89 -Wall -Wextra
 LIBS = -lcurl
+CFILES = src/tdl.c src/cmd.c src/signals.c
+OFILES = obj/tdl.o obj/cmd.o src/signals.o
+CC = gcc
 
-all: src/tdl.c src/cmd.c src/cmd.h src/signals.c src/signals.h src/types.h
+all: $(CFILES)
 	cc $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
 	cc $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
 	cc $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
 	cc obj/cmd.o obj/tdl.o obj/signals.o -o obj/tdl.out
 
-obj: src/tdl.c src/cmd.c src/cmd.h
+obj: $(OFILES)
 	cc $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
 	cc $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
 	cc $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
 
-clean: obj/tdl.o obj/cmd.o
+clean: $(OFILES)
 	rm obj/*
 	rm *.out
