@@ -5,15 +5,15 @@ OFILES = obj/tdl.o obj/cmd.o src/signals.o
 CC = gcc
 
 all: $(CFILES)
-	cc $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
-	cc $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
-	cc $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
-	cc obj/cmd.o obj/tdl.o obj/signals.o -o obj/tdl.out
+	$(CC) $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
+	$(CC) $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
+	$(CC) $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
+	$(CC) obj/cmd.o obj/tdl.o obj/signals.o -o obj/tdl.out
 
 obj: $(OFILES)
-	cc $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
-	cc $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
-	cc $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
+	$(CC) $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
+	$(CC) $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
+	$(CC) $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
 
 clean: $(OFILES)
 	rm obj/*
