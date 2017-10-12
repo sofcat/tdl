@@ -2,6 +2,7 @@
 
 int parsecmd(char *cmd)
 {
+	/* temporary */
 	int i;
 	for (i = 0; i < strlen(cmd); i++)
 	{
