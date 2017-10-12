@@ -2,5 +2,9 @@
 
 int parsecmd(char *cmd)
 {
-	puts("cmd recived");
+	int i;
+	for (i = 0; i < strlen(cmd); i++)
+	{
+		printf("%X\n", cmd[i]);
+	} 
 }

@@ -20,6 +20,15 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 	}
 }
 
+/* makes all string values zero */
+void zerostring(char *str)
+{
+	int i;
+
+	for (i = 0; i < strlen(str); i++)
+		str[i] = 0;
+}
+
 int main()
 {
 	struct sigaction *sa; /* for signals */
@@ -28,6 +37,7 @@ int main()
 	char *prompt = "> "; /* the command prompt TODO: make changable */
 
 	initalizeitem(&inital, NULL);
+	zerostring(cmd);
 
 	do {
 		if (strlen(cmd) > 0)
