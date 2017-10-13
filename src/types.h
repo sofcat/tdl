@@ -1,3 +1,4 @@
+/* current download status */
 enum status
 {
 	WAITING, /* the file has just been initalized, and when it is waiting to start */
@@ -7,6 +8,7 @@ enum status
 	INTERUPTED /* a network/program error occured */
 };
 
+/* struct which is used for handling downloads */
 typedef struct downloaditem
 {
 	char *url; /* where the file is being downloaded from - self explainitory */
@@ -16,6 +18,8 @@ typedef struct downloaditem
 	struct downloaditem *next; /* next item on the queue */
 } dl_t;
 
+/* hash table structure */
+/* used for the list of commands */
 typedef struct hashtable
 {
 	char **keys; /* the string which maps to the index */

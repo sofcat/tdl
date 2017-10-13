@@ -44,8 +44,10 @@ int main()
 		if (strlen(cmd) > 0)
 		{
 			parsecmd(cmd);
+			zerostring(cmd);
 		}
 		printf("%s", prompt);
 	} while (fgets(cmd, sizeof(cmd), stdin) != NULL);
+
 	return 0;
 }
