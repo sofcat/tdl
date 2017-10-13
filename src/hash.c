@@ -10,4 +10,6 @@ hash_t new_table(void *array, char **map)
 {
 	hash_t new;
 	unsigned size;
+
+	s
 }

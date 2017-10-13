@@ -7,7 +7,7 @@
 #include "signals.h"
 
 /* function to create the items, setting all values to NULL or zero */
-void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
+static void initalizeitem(dl_t *new, dl_t *prev)
 {
 	/* set all values to none */
 	new->url = NULL;
@@ -22,7 +22,7 @@ void initalizeitem(struct downloaditem *new, struct downloaditem *prev)
 }
 
 /* makes all string values zero */
-void zerostring(char *str)
+static void zerostring(char *str)
 {
 	unsigned i;
 
