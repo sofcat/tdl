@@ -17,13 +17,3 @@ typedef struct downloaditem
 	enum status state; /* state which the file is in, typically running or finished */
 	struct downloaditem *next; /* next item on the queue */
 } dl_t;
-
-/* hash table structure */
-/* used for the list of commands */
-typedef struct hashtable
-{
-	char **keys; /* the string which maps to the index */
-	int index; /* the array's index */
-	void *array; /* a pointer to the array */
-	
-} hash_t;
