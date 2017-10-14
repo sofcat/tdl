@@ -38,6 +38,7 @@ int main()
 
 	/* set up signals */
 	signal(SIGINT, death);
+	signal(SIGTERM, death);
 
 	initalizeitem(&inital, NULL);
 	zerostring(cmd);
