@@ -1,1 +1,1 @@
-void handlesignal(int signal);
+void death(int signal);

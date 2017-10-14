@@ -32,10 +32,12 @@ static void zerostring(char *str)
 
 int main()
 {
-	struct sigaction *sa; /* for signals */
 	dl_t inital; /* must have an an inital struct to allow for linking lists */
 	char cmd[CMD_SIZE]; /* commands which are typed in are stored here */
 	char *prompt = "> "; /* the command prompt TODO: make changable */
+
+	/* set up signals */
+	signal(SIGINT, death);
 
 	initalizeitem(&inital, NULL);
 	zerostring(cmd);
