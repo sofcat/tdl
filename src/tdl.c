@@ -46,7 +46,7 @@ int main()
 	do {
 		if (strlen(cmd) > 0)
 		{
-			parsecmd(cmd);
+			parseEntry(cmd);
 			zerostring(cmd);
 		}
 		printf("%s", prompt);

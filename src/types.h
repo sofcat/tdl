@@ -18,12 +18,8 @@ typedef struct downloaditem
 	struct downloaditem *next; /* next item on the queue */
 } dl_t;
 
-/* hash table structure */
-/* used for the list of commands */
-typedef struct hashtable
+typedef struct command
 {
-	char **keys; /* the string which maps to the index */
-	int index; /* the array's index */
-	void *array; /* a pointer to the array */
-	
-} hash_t;
+	char *name; /* what the user will type to run the command */
+	int (*func)(char**); /* pointer to what the command will execute */
+} cmd_t;
