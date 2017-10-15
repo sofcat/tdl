@@ -46,7 +46,7 @@ int main()
 	do {
 		if (strlen(cmd) > 0)
 		{
-			current = parseEntry(cmd);
+			current = createCmd(cmd);
 			free(current);
 		}
 		printf("%s", prompt);

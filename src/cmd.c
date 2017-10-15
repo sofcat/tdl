@@ -7,7 +7,7 @@
 #include "builtins.h"
 #define SPACE 0x20
 
-extern cmd_t *parseEntry(char *cmd)
+extern cmd_t *createCmd(char *cmd)
 {
 	char *remove = " \n";
 	char *token;
