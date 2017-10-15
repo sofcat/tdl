@@ -21,5 +21,6 @@ typedef struct downloaditem
 typedef struct command
 {
 	char *name; /* what the user will type to run the command */
+	char *args[3]; /* commmand arguments */
 	int (*func)(char**); /* pointer to what the command will execute */
 } cmd_t;

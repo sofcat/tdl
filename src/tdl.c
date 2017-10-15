@@ -6,7 +6,7 @@
 #include "signals.h"
 
 /* function to create the items, setting all values to NULL or zero */
-static void initalizeitem(dl_t *new, dl_t *prev)
+static void initalizeItem(dl_t *new, dl_t *prev)
 {
 	/* set all values to none */
 	new->url = NULL;
@@ -21,7 +21,7 @@ static void initalizeitem(dl_t *new, dl_t *prev)
 }
 
 /* makes all string values zero */
-static void zerostring(char *str)
+static void zeroString(char *str)
 {
 	unsigned i;
 
@@ -33,19 +33,21 @@ int main()
 {
 	dl_t inital; /* must have an an inital struct to allow for linking lists */
 	char cmd[CMD_SIZE]; /* commands which are typed in are stored here */
+	cmd_t *current; /* cmd is converted to this to be associated with functions */
 	char *prompt = "> "; /* the command prompt TODO: make changable */
 
 	/* set up signals */
 	signal(SIGINT, death);
 	signal(SIGTERM, death);
 
-	initalizeitem(&inital, NULL);
-	zerostring(cmd);
+	initalizeItem(&inital, NULL);
+	zeroString(cmd);
 
 	do {
 		if (strlen(cmd) > 0)
 		{
-			cmd_t *current = parseEntry(cmd);
+			current = parseEntry(cmd);
+			free(current);
 		}
 		printf("%s", prompt);
 	} while (fgets(cmd, sizeof(cmd), stdin) != NULL);

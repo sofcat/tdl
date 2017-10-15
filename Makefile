@@ -1,4 +1,4 @@
-FLAGS = -g -std=c89 -Wall -Wextra
+FLAGS = -g -std=c11 -Wall -Wextra
 LIBS = -lcurl
 CFILES = src/tdl.c src/cmd.c src/signals.c
 OFILES = obj/tdl.o obj/cmd.o src/signals.o
