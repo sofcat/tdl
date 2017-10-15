@@ -1,2 +1,3 @@
+#include "types.h"
 #define CMD_SIZE 32
-int parseEntry(char *cmd);
+cmd_t *parseEntry(char *cmd);

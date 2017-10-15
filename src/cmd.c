@@ -4,22 +4,9 @@
 #include <string.h>
 #include <errno.h>
 #include "cmd.h"
-#include "types.h"
 #include "builtins.h"
 /* space ascii in hex */
 #define SPACE 0x20
-
-/*
-static int parseCmd(char *cmd)
-{
-	return 0;
-}
-
-static int parseArgs(char *items, ...)
-{
-	return 0;
-}
-*/
 
 /* finds the total amount of spaces (args) in str */
 static unsigned totalArgs(char *str)
@@ -50,24 +37,23 @@ static unsigned totalArgs(char *str)
 	return 0;
 }
 
-int parseEntry(char *cmd)
+static char **splitString(char *str, unsigned amount)
 {
-	unsigned i, j, y, index, prev;
-	char *buffer[totalArgs(cmd)];
-
+	unsigned index, prev, i, j, y;
+	char *splitString[amount];
 	/* splits string into an array of strings */
 	/* index is for indexing 2d array (x-axis) */
 	/* prev is how many times it looped before last space */
-	/* i is the index for the cmd string */
+	/* i is the index for the string */
 	index = 0, prev = 0, i = 0;
-	while(i < strlen(cmd) + 1)
+	while(1)
 	{
-		if (cmd[i] == SPACE || cmd[i] == '\0')
+		if (str[i] == SPACE || str[i] == '\0')
 		{
 			/* i - prev to calculate the distance from the last space */
-			buffer[index] = calloc(i - prev, sizeof(char));
+			splitString[index] = calloc(i - prev, sizeof(char));
 
-			if (buffer[index] < 0)
+			if (splitString[index] < 0)
 			{
 				fprintf(stderr, "Error allocing memory: %s\n", strerror(errno));
 				exit(255);
@@ -78,10 +64,10 @@ int parseEntry(char *cmd)
 			/* while j is less than the current position, increment */
 			for (j = prev, y = 0; j < i; j++, y++)
 			{
-				buffer[index][y] = cmd[j];
+				splitString[index][y] = str[j];
 			}
 
-			if (cmd[i] == '\0')
+			if (str[i] == '\0')
 				break;
 
 			index++;
@@ -91,8 +77,22 @@ int parseEntry(char *cmd)
 		i++;
 	}
 
-	for (i = 0; i < index; i++)
+	return splitString;
+}
+
+cmd_t *parseEntry(char *cmd)
+{
+	unsigned args = totalArgs(cmd);
+	char **buffer;
+
+	if (args == 0)
+		return NULL;
+	else if (args == 1)
 	{
-		printf("%s\n", buffer[i]);
+		buffer[0] = calloc(strlen(cmd), sizeof(char));
+	}
+	else
+	{
+		buffer = splitString(cmd, args);
 	}
 }

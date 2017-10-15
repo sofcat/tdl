@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
-#include "types.h"
 #include "cmd.h"
 #include "signals.h"
 
@@ -46,8 +45,7 @@ int main()
 	do {
 		if (strlen(cmd) > 0)
 		{
-			parseEntry(cmd);
-			zerostring(cmd);
+			cmd_t *current = parseEntry(cmd);
 		}
 		printf("%s", prompt);
 	} while (fgets(cmd, sizeof(cmd), stdin) != NULL);
