@@ -3,6 +3,7 @@
 #include <string.h>
 #include <signal.h>
 #include "cmd.h"
+#include "builtins.h"
 #include "signals.h"
 
 /* function to create the items, setting all values to NULL or zero */
@@ -34,6 +35,7 @@ int main()
 	dl_t inital; /* must have an an inital struct to allow for linking lists */
 	char cmd[CMD_SIZE]; /* commands which are typed in are stored here */
 	cmd_t *current; /* cmd is converted to this to be associated with functions */
+	cmd_t *list[LIST_SIZE] = initalizeCommands(commandFunctions, commandNames);
 	char *prompt = "> "; /* the command prompt TODO: make changable */
 
 	/* set up signals */
@@ -48,6 +50,7 @@ int main()
 		{
 			current = createCmd(cmd);
 			free(current);
+			zeroString(cmd);
 		}
 		printf("%s", prompt);
 	} while (fgets(cmd, sizeof(cmd), stdin) != NULL);
