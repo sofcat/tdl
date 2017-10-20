@@ -1,3 +1,4 @@
+#ifndef TYPES_DEFINED
 /* current download status */
 enum status
 {
@@ -24,3 +25,5 @@ typedef struct command
 	char *args[3]; /* commmand arguments */
 	int (*func)(char**); /* pointer to what the command will execute */
 } cmd_t;
+#define TYPES_DEFINED
+#endif

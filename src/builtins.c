@@ -1,57 +1,33 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include "builtins.h"
 
-extern int test(char *string)
+static void echo(char **phrases)
 {
-	printf("Horray, %s!\n", string);
-	return 0;
+	unsigned i;
+
+	for (i = 0; i < sizeof(phrases)/sizeof(phrases[0]); i++)
+		puts(phrases[i]);
 }
 
-extern int echo(char *phrase)
-{
-	puts(phrase);
-	return 0;
-}
+/* global variable which contains all builtins */
 
-extern const int (*commandFunctions[LIST_SIZE])(char*) = {
-	test,
-	echo
-};
-
-extern const char commandNames[LIST_SIZE][16] = {
-	"test",
+const char **commandNames = {
 	"echo"
 };
 
-extern cmd_t *initalizeCommands[](int (*funcs[])(char*), char **names)
+#define CMD_COUNT sizeof(commandNames)/sizeof(commandNames[0])
+static void (*commandFuncs[CMD_COUNT])(char**) = {
+	&echo
+};
+
+extern void initalizeCommands(void)
 {
-	int size = 0, i;
+	unsigned i;
 
-	while (size < sizeof(names)/sizeof(names))
+	for (i = 0; i < CMD_COUNT; i++)
 	{
-		size++;
-	}
-
-	cmd_t *cmd[size] = calloc(size, sizeof(cmd_t));
-
-	for (i = 0; i < size; i++)
-	{
-		cmd[i]->name = names[i];
-		cmd[i]->func = funcs[i];
+		builtins[i].name = commandNames[i];
+		builtins[i].func = commandFuncs[i];
 	}
 }
-
-extern cmd_t *funcScan(char *search, cmd_t list)
-{
-	int i;
-
-	for (i = 0; i < sizeof(names)/sizeof(char*); i++)
-	{
-		if (strncmp(search, names[i], 16) == 0)
-			return &list[i];
-	}
-
-	return NULL;
-}
-

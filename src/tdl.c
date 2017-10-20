@@ -4,7 +4,9 @@
 #include <signal.h>
 #include "cmd.h"
 #include "builtins.h"
+#include "parse.h"
 #include "signals.h"
+#include "types.h"
 
 /* function to create the items, setting all values to NULL or zero */
 static void initalizeItem(dl_t *new, dl_t *prev)
@@ -30,25 +32,28 @@ static void zeroString(char *str)
 		str[i] = 0;
 }
 
-int main()
+int main(void)
 {
 	dl_t inital; /* must have an an inital struct to allow for linking lists */
-	char cmd[CMD_SIZE]; /* commands which are typed in are stored here */
 	cmd_t *current; /* cmd is converted to this to be associated with functions */
-	cmd_t *list[LIST_SIZE] = initalizeCommands(commandFunctions, commandNames);
+	char cmd[64]; /* commands which are typed in are stored here */
 	char *prompt = "> "; /* the command prompt TODO: make changable */
 
 	/* set up signals */
 	signal(SIGINT, death);
 	signal(SIGTERM, death);
 
+	initializeCommands();
 	initalizeItem(&inital, NULL);
-	zeroString(cmd);
+	zeroString(cmd); /* ensure that string has been initalized */
 
 	do {
 		if (strlen(cmd) > 0)
 		{
 			current = createCmd(cmd);
+			if (parseEntry(current->name, current->args) != 0)
+				puts("Error: command not found");
+
 			free(current);
 			zeroString(cmd);
 		}
