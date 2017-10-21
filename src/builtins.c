@@ -10,9 +10,7 @@ static void echo(char **phrases)
 		puts(phrases[i]);
 }
 
-/* global variable which contains all builtins */
-
-const char **commandNames = {
+const char *commandNames[1] = {
 	"echo"
 };
 

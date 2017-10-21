@@ -10,7 +10,7 @@ extern int parseEntry(char *name, char **args)
 
 	for (i = 0; i < sizeof(builtins)/sizeof(builtins[0]); i++)
 	{
-		if (strcmp(name, builtins[i].name))
+		if (strcmp(name, builtins[i].name) == 0)
 		{
 				builtins[i].func(args);
 				return 0;
