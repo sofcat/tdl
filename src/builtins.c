@@ -8,7 +8,7 @@
  */
 
 /* prints available commands */
-static void help(void)
+static void help(char **unused)
 {
 	printf("help: print this help prompt\n");
 	printf("echo: echo a string\n");
@@ -24,7 +24,7 @@ static void echo(char **phrases)
 }
 
 /* TODO: make arrays flexable - not hard coded */
-const char *commandNames[CMD_AMOUNT] = {
+char *commandNames[CMD_AMOUNT] = {
 	"help",
 	"echo"
 };
