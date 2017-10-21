@@ -2,6 +2,19 @@
 #include <string.h>
 #include "builtins.h"
 
+/*
+ * functions which are used within the prompt
+ * all must be of type void func(char **str)
+ */
+
+/* prints available commands */
+static void help(void)
+{
+	printf("help: print this help prompt\n");
+	printf("echo: echo a string\n");
+}
+
+/* echos a string */
 static void echo(char **phrases)
 {
 	unsigned i;
@@ -10,20 +23,23 @@ static void echo(char **phrases)
 		puts(phrases[i]);
 }
 
-const char *commandNames[1] = {
+/* TODO: make arrays flexable - not hard coded */
+const char *commandNames[CMD_AMOUNT] = {
+	"help",
 	"echo"
 };
 
-#define CMD_COUNT sizeof(commandNames)/sizeof(commandNames[0])
-static void (*commandFuncs[CMD_COUNT])(char**) = {
+static void (*commandFuncs[CMD_AMOUNT])(char**) = {
+	&help,
 	&echo
 };
 
+/* function which adds all functions to the builtin array */
 extern void initializeCommands()
 {
 	unsigned i;
 
-	for (i = 0; i < CMD_COUNT; i++)
+	for (i = 0; i < CMD_AMOUNT; i++)
 	{
 		builtins[i].name = commandNames[i];
 		builtins[i].func = commandFuncs[i];
