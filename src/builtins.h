@@ -1,4 +1,4 @@
 #include "types.h"
-#define CMD_COUNT 1
-cmd_t builtins[CMD_COUNT];
-void initializeCommands(void);
+#define CMD_AMOUNT 1
+cmd_t builtins[CMD_AMOUNT];
+extern void initializeCommands();

@@ -21,7 +21,7 @@ static void (*commandFuncs[CMD_COUNT])(char**) = {
 	&echo
 };
 
-extern void initalizeCommands(void)
+extern void initializeCommands()
 {
 	unsigned i;
 
