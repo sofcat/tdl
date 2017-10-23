@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "builtins.h"
+#include "builtins/builtins.h"
 #include "types.h"
 
 extern int parseEntry(char *name, char **args)

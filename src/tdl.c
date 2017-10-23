@@ -3,7 +3,7 @@
 #include <string.h>
 #include <signal.h>
 #include "cmd.h"
-#include "builtins.h"
+#include "builtins/builtins.h"
 #include "parse.h"
 #include "signals.h"
 #include "types.h"

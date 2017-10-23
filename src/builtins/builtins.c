@@ -23,18 +23,25 @@ static void echo(char **phrases)
 		puts(phrases[i]);
 }
 
+/* sets a variable */
+static void set(char **var)
+{
+	void *variable; /* where the variable will be stored */
+}
+
 /* TODO: make arrays flexable - not hard coded */
 char *commandNames[CMD_AMOUNT] = {
 	"help",
 	"echo"
 };
 
+/* TODO: make array type generic so any function can be used*/
 static void (*commandFuncs[CMD_AMOUNT])(char**) = {
 	&help,
 	&echo
 };
 
-/* function which adds all functions to the builtin array */
+/* function which adds all functions to the global builtin array */
 extern void initializeCommands()
 {
 	unsigned i;

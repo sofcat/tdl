@@ -4,7 +4,7 @@
 #include <string.h>
 #include <errno.h>
 #include "cmd.h"
-#include "builtins.h"
+#include "builtins/builtins.h"
 #include "types.h"
 #define SPACE 0x20
 
