@@ -7,16 +7,7 @@ OFILES = obj/cmd.o obj/signals.o obj/parse.o obj/help.o obj/echo.o obj/set.o obj
 BFILES = $(BDIR)/builtins.h $(BDIR)/builtins.c
 CC = gcc
 
-all: $(CFILES) $(HFILES) $(BFILES)
-	$(CC) $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
-	$(CC) $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
-	$(CC) $(FLAGS) $(LIBS) -c src/parse.c -o obj/parse.o
-	$(CC) $(FLAGS) $(LIBS) -c $(BDIR)/help.c -o obj/help.o
-	$(CC) $(FLAGS) $(LIBS) -c $(BDIR)/echo.c -o obj/echo.o
-	$(CC) $(FLAGS) $(LIBS) -c $(BDIR)/set.c -o obj/set.o
-	$(CC) $(FLAGS) $(LIBS) -c $(BDIR)/builtins.c -o obj/builtins.o
-	$(CC) $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
-	$(CC) $(OFILES) -o tdl.out
+all: object bin
 
 object: $(CFILES) $(HFILES)
 	$(CC) $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
