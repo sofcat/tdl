@@ -13,8 +13,11 @@ object: $(CFILES) $(HFILES)
 	$(CC) $(FLAGS) $(LIBS) -c src/cmd.c -o obj/cmd.o
 	$(CC) $(FLAGS) $(LIBS) -c src/signals.c -o obj/signals.o
 	$(CC) $(FLAGS) $(LIBS) -c src/parse.c -o obj/parse.o
-	$(CC) $(FLAGS) $(LIBS) -c src/builtins.c -o obj/builtins.o
+	$(CC) $(FLAGS) $(LIBS) -c src/builtins/builtins.c -o obj/builtins.o
 	$(CC) $(FLAGS) $(LIBS) -c src/tdl.c -o obj/tdl.o
+	$(CC) $(FLAGS) $(LIBS) -c src/builtins/help.c -o obj/help.o
+	$(CC) $(FLAGS) $(LIBS) -c src/builtins/echo.c -o obj/echo.o
+	$(CC) $(FLAGS) $(LIBS) -c src/builtins/set.c -o obj/set.o
 
 bin: $(OFILES)
 	$(CC) $(OFILES) -o tdl.out
