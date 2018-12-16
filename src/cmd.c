@@ -7,6 +7,7 @@
 #include "builtins/builtins.h"
 #include "types.h"
 #define SPACE 0x20
+## h
 
 extern cmd_t *createCmd(char *cmd)
 {
